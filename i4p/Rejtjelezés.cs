@@ -67,7 +67,7 @@ namespace i4p
                         code += abc[remainder];
                     }
                 }
-                return $"üzenet: {this.message}\nkulcs: {this.key}\nrejtjelezett üzenet: {code}";
+                return $"Rejtjelezett üzenet: code";
             }
             
             //Ha az üzenet vagy kulcs hibás formátumú
@@ -86,6 +86,25 @@ namespace i4p
                 CodeIndex++;
             if (CodeIndex < key.Length)
                 Console.WriteLine("Nem csak az angol abc vagy ' ' karaktereket használtad a rejtjelezett üzenetedben!");
+
+            if (key!=null)
+            {
+                string messageCode = "";
+                for (int i = 0; i < Code.Length; i++)
+                {
+                    int temp = Array.IndexOf(abc, Code[i]) - Array.IndexOf(abc, key[i]);
+
+                    if (temp >=0)
+                        messageCode += abc[temp];
+                    else
+                    {
+                        int remainder = (27 + Array.IndexOf(abc, Code[i])) - Array.IndexOf(abc, key[i]);
+                        messageCode += abc[remainder];
+                    }
+                }
+                return $"Eredeti Üzenet: {messageCode}";
+            }
+            return "Az üzenet dekódolása nem készíthető el egy megfelelő formátumú kulcs nélkül!";
         }
         
     }

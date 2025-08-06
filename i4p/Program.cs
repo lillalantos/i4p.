@@ -4,8 +4,34 @@
     {
         static void Main(String[] args)
         {
-            Rejtjelezés titkositas = new Rejtjelezés("helloworld", "abcdefgijk");
-            Console.WriteLine(titkositas.Code());
+            Console.WriteLine("Kódolni (1), vagy dekódolni (2) szeretne? (válasszon egy számot!)");
+            int choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1)
+            {
+                Console.WriteLine("Adja meg a kódólandó üzenetet, majd a kulcsot!");
+
+                Console.Write("Üzenet: ");
+                string message = Console.ReadLine();
+                Console.Write("Kulcs: ");
+                string key = Console.ReadLine();
+
+                Rejtjelezés titkositas = new Rejtjelezés(message, key);
+                Console.WriteLine(titkositas.Code());
+            }
+
+            else
+            {
+                Console.WriteLine("Adja meg a dekódólandó üzenetet, majd a kulcsot!");
+
+                Console.Write("Üzenet: ");
+                string code = Console.ReadLine();
+                Console.Write("Kulcs: ");
+                string key = Console.ReadLine();
+
+                Rejtjelezés titkositas = new Rejtjelezés(" ", key);
+                Console.WriteLine(titkositas.Message(code, key));
+            }
         }
     }
 }
