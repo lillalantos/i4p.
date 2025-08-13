@@ -20,7 +20,7 @@
                 Console.WriteLine(titkositas.Code());
             }
 
-            else
+            if (choice == 2) 
             {
                 Console.WriteLine("Adja meg a dekódólandó üzenetet, majd a kulcsot!");
 
@@ -32,6 +32,13 @@
                 Rejtjelezés titkositas = new Rejtjelezés(" ", key);
                 Console.WriteLine(titkositas.Message(code, key));
             }
+
+            else
+            {
+                Rejtjelezés titkositas = new Rejtjelezés("early bird catches the worm", "abcdefghijklmnopqrstlkmjnuzh");
+                titkositas.CommonKey("ebtobehpzmjnmfqwuirlsoleakk", "cvtlsxo fiutxysspjzxkmmb",  "early ");
+            }
+
         }
     }
 }
