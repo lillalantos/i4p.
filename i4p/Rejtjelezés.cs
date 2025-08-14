@@ -94,13 +94,8 @@ namespace i4p
                 {
                     int temp = Array.IndexOf(abc, Code[i]) - Array.IndexOf(abc, key[i]);
 
-                    if (temp >= 0)
-                        messageCode += abc[temp];
-                    else
-                    {
-                        int remainder = (27 + Array.IndexOf(abc, Code[i])) - Array.IndexOf(abc, key[i]);
-                        messageCode += abc[remainder];
-                    }
+                    if (temp < 0) temp += 27;
+                    messageCode += abc[temp];
                 }
                 return messageCode;
             }
@@ -114,6 +109,11 @@ namespace i4p
             // TXT beolvasás soronként
             string filePath = "words.txt";
             string[] words = File.ReadAllLines(filePath);
+
+            //foreach (string word in words)
+            //{
+            //    Console.WriteLine(word);
+            //}
 
             //Early -vel meghatározott kulcsrészlet
             string KeyBlock = "";
@@ -133,97 +133,146 @@ namespace i4p
             string Message2 = Message(Code2.Substring(0, Word1.Length), KeyBlock);
             //Console.WriteLine(Message2);
 
+
+            int maximumIterations = 1000;
+            int currentIteration = 0;
+
+
             //Addig keresse az új szavakat && kulcsrészleteket, amíg valamelyik üzenet szóközre végződik
-            while (Message1[Message1.Length - 1] == ' ' || Message2[Message2.Length - 1] == ' ')
+            while ((Message1[Message1.Length - 1] == ' ' || Message2[Message2.Length - 1] == ' ') && currentIteration < maximumIterations)
             {
-                
-                int space1 = Message1.LastIndexOf(' ');
-                int LastIndex1;
-                if (space1 != -1)  //Substringnél értelmezhető legyen 
-                    LastIndex1 = space1;
-                LastIndex1 = 0;
+                currentIteration++;
+
+
+                int LastIndex1 = Message1.LastIndexOf(' ');
+                if (LastIndex1 == -1) LastIndex1 = 0;
+
 
                 //Ha az utolsó szóköz nem a végén szerepel
-                if (LastIndex1 != Message1.Length - 1)        
+
+                while (Message1.LastIndexOf(' ') != Message1.Length - 1)
                 {
+                    
                     //Üzenet utolsó befejezetlen szava
-                    string MessageBlock1 = Message1.Substring(LastIndex1);
+                    string MessageBlock1 = Message1.Substring(LastIndex1 + 1);
 
                     //Minden szó a listából, ami ezzel a szóval kezdődik
-                    string[] PossibleWords = words.Where(s => s.StartsWith(MessageBlock1)).ToArray();
+                    string[] PossibleWords1 = words.Where(s => s.StartsWith(MessageBlock1) && s.Length >= MessageBlock1.Length).ToArray();
+                    //Console.WriteLine(PossibleWords1.Length);
 
-
-
-                    //Lehetséges szavakkal új kulcs generálása
-                    string PossibleKeyBlock = KeyBlock;
-                    int i = 0;
-                    //Új kulcsrészlet által üzenet tovább dekódolása
-                    while (!words.Contains(Message(Code2.Substring(Message2.Length), PossibleKeyBlock)) && i<PossibleWords.Length)    //Amíg a szavak listája nem tartalmazza a dekódolt részletet, addig vizsgálja a lehetséges szavakat
+                    
+                    foreach (string PossibleWord in PossibleWords1)
                     {
-                        
-                        for (int j = LastIndex1; j < PossibleWords[i].Length; j++)
+                        string PossibleKeyBlock = KeyBlock;
+
+                        for (int i = MessageBlock1.Length; i < PossibleWord.Length; i++)
                         {
-                            int temp = Array.IndexOf(abc, Code1[j]) - Array.IndexOf(abc, PossibleWords[i][j]);
-                            if (temp >= 0)
-                                PossibleKeyBlock += abc[temp];
-                            PossibleKeyBlock += abc[(27 + Array.IndexOf(abc, Code1[j])) - Array.IndexOf(abc, PossibleWords[i][j])];
+
+                            int temp = Array.IndexOf(abc, Code1[i]) - Array.IndexOf(abc, PossibleWord[i]);
+                            if (temp < 0) temp += 27;
+                            PossibleKeyBlock += abc[temp];
+
                         }
-                        i++;
+
+
+                        //string[] PossibleKeyBlock = new string[PossibleWords1.Length];
+                        //foreach (string PossibleWord in PossibleWords1)
+                        //{
+                        //    string KeyPart = "";
+                        //    for (int i = MessageBlock1.Length; i < PossibleWord.Length ; i++)
+                        //    {
+                        //        int temp = Array.IndexOf(abc, Code1[KeyBlock.Length + i - MessageBlock1.Length ]) - Array.IndexOf(abc, PossibleWord[i]);
+                        //        if (temp < 0) temp += 27;
+                        //        KeyPart += abc[temp];
+
+                        //    }
+                        //    PossibleKeyBlock[Array.IndexOf(PossibleWords1, PossibleWord)] = KeyPart;
+
+
+                        int space = Array.IndexOf(abc, Code1[Message1.Length -1 + PossibleWord.Length]) - Array.IndexOf(abc, ' ');
+                        if (space < 0) space += 27;
+                        PossibleKeyBlock += abc[space];
+
+
+                        //int j = 0;
+                        //while (j<PossibleKeyBlock.Length && MBlock2 != Message2)
+                        //{
+                        //    MBlock2 = Message(Code2.Substring(0, PossibleWord.Length + 1), PossibleKeyBlock[j]);
+                        //    j++;
+                        //}
+
+
+                        // PossibleWord.Lenght = Bird hossza lesz, nem adja meg a curiosity folytatását!!!!
+                        string MBlock2 = Message(Code2.Substring(0, PossibleWord.Length + 1), PossibleKeyBlock);
+                        while (!string.IsNullOrEmpty(MBlock2))
+                        {
+                            Message1 = Message(Code1.Substring(0, PossibleWord.Length + 1 ), PossibleKeyBlock);
+                            Console.WriteLine(Message1.Length);
+                            Message2 = MBlock2;
+                            
+                            KeyBlock = PossibleKeyBlock;
+                            break;
+                        }
                     }
-
-                    Message1 += Message(Code2.Substring(Message2.Length), PossibleKeyBlock);
-
 
                 }
 
 
-                int space2 = Message2.LastIndexOf(' ');
-                int LastIndex2;
-                if (space2 != -1)
-                    LastIndex2 = space2;
-                LastIndex2 = 0;
+                int LastIndex2 = Message2.LastIndexOf(' ');
+                if (LastIndex2 == -1) LastIndex2 = 0;
 
-                if (LastIndex2 != Message2.Length - 1)        
+
+                if (Message2.LastIndexOf(' ') != Message2.Length - 1)
                 {
                     //Üzenet utolsó befejezetlen szava
                     string MessageBlock2 = Message2.Substring(LastIndex2);
 
+                    //Console.WriteLine(MessageBlock2);
 
                     //Minden szó a listából, ami ezzel a szóval kezdődik
-                    string[] PossibleWords = words.Where(s => s.StartsWith(MessageBlock2)).ToArray();
+                    string[] PossibleWords2 = words.Where(s => s.StartsWith(MessageBlock2) && s.Length > MessageBlock2.Length).ToArray();
 
+                    //Console.WriteLine(PossibleWords2.Length);
+                    foreach (string PossibleWord in PossibleWords2)
+                    {
+                        string PossibleKeyBlock = KeyBlock;
 
-
-                    //Lehetséges szavakkal új kulcs generálása
-                    string PossibleKeyBlock ="";
-                    int i = 0;
-                    
-                    //Új kulcsrészlet által üzenet tovább dekódolása
-                   // while (!words.Contains(Message(Code1.Substring(Message1.Length, PossibleKeyBlock.Length), PossibleKeyBlock)) && i<PossibleWords.Length)    //Amíg a szavak listája nem tartalmazza a dekódolt részletet, addig vizsgálja a lehetséges szavakat
-                    //{
-                        for (int j = MessageBlock2.Length; j < PossibleWords[i].Length; j++)
+                        for (int i = MessageBlock2.Length; i < PossibleWord.Length; i++)
                         {
-                            int temp = Array.IndexOf(abc, Code2[j]) - Array.IndexOf(abc, PossibleWords[i][j]);
-                            if (temp >= 0)
-                                PossibleKeyBlock += abc[temp];
-                            else
-                                PossibleKeyBlock += abc[(27 + Array.IndexOf(abc, Code2[j])) - Array.IndexOf(abc, PossibleWords[i][j])];
-                            
-                        
-                            Console.WriteLine(PossibleKeyBlock);
-                            
-                            Console.WriteLine(PossibleWords[i]);
+
+                            int temp = Array.IndexOf(abc, Code2[i]) - Array.IndexOf(abc, PossibleWord[i]);
+                            if (temp < 0) temp += 27;
+                            PossibleKeyBlock += abc[temp];
+
                         }
 
-                    Console.WriteLine(Message(Code1, PossibleKeyBlock));
-                    Console.WriteLine(Message(Code2, PossibleKeyBlock));
-                    i++;
-                        
-                   // }
+                        int space = Array.IndexOf(abc, Code2[PossibleWord.Length]) - Array.IndexOf(abc, ' ');
+                        if (space < 0) space += 27;
+                        PossibleKeyBlock += abc[space];
 
-                    
+                        Console.WriteLine(PossibleKeyBlock);
+
+                        string MBlock1 = Message(Code1.Substring(0, PossibleWord.Length + 1), PossibleKeyBlock) ;
+                        while (!string.IsNullOrEmpty(MBlock1))
+                        {
+                            Message2 = Message(Code2.Substring(0, PossibleWord.Length + 1), PossibleKeyBlock) ;
+                            Console.WriteLine(Message2.Length);
+                            Message1 = MBlock1;
+                            //Console.WriteLine(Message1);
+                            
+                            KeyBlock = PossibleKeyBlock;
+                            break;
+                        }
+
+                        Console.WriteLine(Message1);
+                        Console.WriteLine(Message2);
+
+                    }
+
                 }
 
+
+                
             }
             return KeyBlock;
         }
