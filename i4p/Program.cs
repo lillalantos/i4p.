@@ -16,7 +16,7 @@
                 Console.Write("Kulcs: ");
                 string key = Console.ReadLine();
 
-                Rejtjelezés titkositas = new Rejtjelezés(message, key);
+                Rejtjelezes titkositas = new Rejtjelezes(message, key);
                 Console.WriteLine(titkositas.Code());
             }
 
@@ -29,13 +29,13 @@
                 Console.Write("Kulcs: ");
                 string key = Console.ReadLine();
 
-                Rejtjelezés titkositas = new Rejtjelezés(" ", key);
+                Rejtjelezes titkositas = new Rejtjelezes(" ", key);
                 Console.WriteLine(titkositas.Message(code, key));
             }
 
             else
             {
-                Rejtjelezés titkositas = new Rejtjelezés("early bird catches the worm", "abcdefghijklmnopqrstlkmjnuzh");
+                Rejtjelezes titkositas = new Rejtjelezes("early bird catches the worm", "abcdefghijklmnopqrstlkmjnuzh");
                 titkositas.CommonKey("ebtobehpzmjnmfqwuirlsoleakk", "cvtlsxo fiutxysspjzxkmmb",  "early ");
             }
 
