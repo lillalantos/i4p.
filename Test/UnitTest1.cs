@@ -17,18 +17,11 @@ namespace Test
             Rejtjelezes rejtjelezes = new Rejtjelezes(message, key);
             Assert.That(rejtjelezes.Code(), Is.EqualTo(expected));
 
-            //Assert.Throws<InvalidOperationException>(() => new Rejtjelezes(message, key)
+            
 
         }
 
-        //[TestCase("Almás", "abcdefghij")]
-        //public void ExceptionTest(string InvalidMessage, string Key)
-        //{
-        //    var r = new Rejtjelezes(InvalidMessage, Key);
-        //    Assert.Throws<InvalidOperationException>(() => new Rejtjelezes(InvalidMessage, Key));
-        //    //Assert.That(throws.Message, Is.EqualTo("Az üzenet csak az angol abc kisbetûit és szóközt tartalmazhat!"));
 
-        //}
 
         [TestCase("hfnosauzun", "abcdefgijkl", "helloworld")]
         [TestCase("kzct", "korte", "alma")]
@@ -37,8 +30,22 @@ namespace Test
             Rejtjelezes rejtjelezes = new Rejtjelezes(code, key);
             Assert.That(rejtjelezes.Message(code, key), Is.EqualTo(expected));
 
-            //Assert.Throws<InvalidOperationException>(() => new Rejtjelezes(message, key)
+            
 
+        }
+
+        [Test]
+        public void KeyBlockTest()
+        {
+            Rejtjelezes rejtjelezes = new Rejtjelezes("early ", "ebtobehpzmjnmfqwuirlsoleakk", "cvtlsxo fiutxysspjzxkmmb");
+            Assert.That(rejtjelezes.KeyBlock("curios", "Code2"), Is.EqualTo("abcdefghij"));
+        }
+
+        [Test]
+        public void CommonKeyTest()
+        {
+            Rejtjelezes rejtjelezes = new Rejtjelezes("early ", "ebtobehpzmjnmfqwuirlsoleakk", "cvtlsxo fiutxysspjzxkmmb");
+            Assert.That(rejtjelezes.CommonKey(), Is.EqualTo("abcdefghijklmnopqrstlkmjnuzh"));
         }
     }
 }
