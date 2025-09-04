@@ -1,0 +1,14 @@
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\bin\Debug\net8.0\i4p.exe
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\bin\Debug\net8.0\i4p.deps.json
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\bin\Debug\net8.0\i4p.runtimeconfig.json
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\bin\Debug\net8.0\i4p.dll
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\bin\Debug\net8.0\i4p.pdb
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.AssemblyInfoInputs.cache
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.AssemblyInfo.cs
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.csproj.CoreCompileInputs.cache
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.dll
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\refint\i4p.dll
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.pdb
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\i4p.genruntimeconfig.cache
+C:\Users\lanto\OneDrive\Dokumentumok\önéletzrajz\i4p\i4p\obj\Debug\net8.0\ref\i4p.dll

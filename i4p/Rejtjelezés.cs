@@ -76,19 +76,19 @@ namespace i4p
             if (Code == null)
                 throw new ArgumentNullException(nameof(Code), "A rejtjelezett üzenet nem lehet null!");
 
-            if (key == null)
-                throw new ArgumentNullException(nameof(key), "A kulcs nem lehet null!");
+            if (Key == null)
+                throw new ArgumentNullException(nameof(Key), "A kulcs nem lehet null!");
 
             if (Code.Any(ch => !abc.Contains(ch)))
                 throw new ArgumentException("A rejtjelezett üzenet csak az angol abc kisbetűit és szóközt tartalmazhat!");
 
-            if (key.Length < Code.Length)
+            if (Key.Length < Code.Length)
                 throw new ArgumentException("A kulcs hossza nem lehet rövidebb, mint a rejtjelezett üzeneté!");
 
             string messageCode = "";
             for (int i = 0; i < Code.Length; i++)
             {
-                int temp = Array.IndexOf(abc, Code[i]) - Array.IndexOf(abc, key[i]);
+                int temp = Array.IndexOf(abc, Code[i]) - Array.IndexOf(abc, Key[i]);
 
                 if (temp < 0) temp += 27;
                 messageCode += abc[temp];
@@ -133,20 +133,23 @@ namespace i4p
 
         public string KeyBlock(string LastBlock, string WhichCode)
         {
-            string WhichMessage;
-            string Othermessage;
+            string[] Messages = {message1, message2};
+
+            int WhichMessage;
+            int Othermessage;
             string OtherCode;
-            if (WhichCode == "Code1")
+
+            if (WhichCode == Code1)
             {
-                WhichMessage = message1;
-                Othermessage = message2;
+                WhichMessage = 0;
+                Othermessage = 1;
                 OtherCode = Code2;
             }
 
             else
             {
-                WhichMessage = message2;
-                Othermessage = message1;
+                WhichMessage = 1;
+                Othermessage = 0;
                 OtherCode = Code1;
             }
 
@@ -159,13 +162,19 @@ namespace i4p
             //Utolsó szórészlettel kezdődő szavak
             string[] PossibleWords = words.Where(s => s.StartsWith(LastBlock) && s.Length >= LastBlock.Length).ToArray();
 
+
+
             foreach (string PossibleWord in PossibleWords)
             {
                 string PossibleKeyBlock = key;
 
+
+                if (Messages[WhichMessage][Messages[WhichMessage].Length - 1] == ' ')
+                    break;
+
                 for (int i = LastBlock.Length; i < PossibleWord.Length; i++)
                 {
-                    int CodeIndex = WhichMessage.Length - LastBlock.Length + i;
+                    int CodeIndex = Messages[WhichMessage].Length - LastBlock.Length + i;
                     if (CodeIndex >= WhichCode.Length) break;
 
                     int temp = Array.IndexOf(abc, WhichCode[CodeIndex]) - Array.IndexOf(abc, PossibleWord[i]);
@@ -175,7 +184,7 @@ namespace i4p
 
                 //listából megtalált szó kiegészítése szóközzel
                 int space;
-                if (PossibleKeyBlock.Length < WhichCode.Length && WhichMessage[WhichMessage.Length - 1] != ' ')
+                if (PossibleKeyBlock.Length < WhichCode.Length && Messages[WhichMessage][Messages[WhichMessage].Length - 1] != ' ')
                 {
                     space = Array.IndexOf(abc, WhichCode[PossibleKeyBlock.Length]) - Array.IndexOf(abc, ' ');
                     if (space < 0) space += 27;
@@ -183,23 +192,28 @@ namespace i4p
                 }
 
                 string MBlock;
-                if (Othermessage.Length + 1 + PossibleWord.Length - LastBlock.Length <= WhichCode.Length)
-                    MBlock = Message(OtherCode.Substring(0, PossibleKeyBlock.Length - 1), PossibleKeyBlock);
+                if (PossibleKeyBlock.Length <= OtherCode.Length)
+                    MBlock = Message(OtherCode.Substring(0, PossibleKeyBlock.Length ), PossibleKeyBlock);
                 else
-                    MBlock = Message(OtherCode, PossibleKeyBlock.Substring(0, OtherCode.Length - 1));
+                    MBlock = Message(OtherCode, PossibleKeyBlock.Substring(0, OtherCode.Length ));
                 //string MBlock2 = Message(Code2.Substring(0, Message2.Length + PossibleWord.Length - MessageBlock1.Length), PossibleKeyBlock);
 
-                while (!string.IsNullOrEmpty(MBlock))
+                string LastPartOfOtherMessage = MBlock.Substring(MBlock.LastIndexOf(' ') + 1);
+                string[] Contains = words.Where(s => s.StartsWith(LastPartOfOtherMessage) && s.Length >= LastPartOfOtherMessage.Length).ToArray();
+
+                while (!string.IsNullOrEmpty(MBlock) && Contains.Length != 0)
                 {
-                    if (WhichMessage.Length + 1 + PossibleWord.Length - LastBlock.Length <= WhichCode.Length)
-                        WhichMessage = Message(WhichCode.Substring(0, PossibleKeyBlock.Length + 1), PossibleKeyBlock);
+                    if (Messages[WhichMessage].Length + 1 + PossibleWord.Length - LastBlock.Length <= WhichCode.Length)
+                        Messages[WhichMessage] = Message(WhichCode.Substring(0, PossibleKeyBlock.Length ), PossibleKeyBlock);
                     else
-                        WhichMessage = Message(WhichCode, PossibleKeyBlock.Substring(0, WhichCode.Length));
+                        Messages[WhichMessage] = Message(WhichCode, PossibleKeyBlock.Substring(0, WhichCode.Length));
                     //Message1 = Message(Code1.Substring(0, Message1.Length + 1 + PossibleWord.Length - MessageBlock1.Length), PossibleKeyBlock);
-                    Othermessage = MBlock;
+                    Messages[Othermessage] = MBlock;
 
                     key = PossibleKeyBlock;
-                    Console.WriteLine(WhichMessage);
+                    message1 = Messages[0];
+                    message2 = Messages[1];
+                    //Console.WriteLine(WhichMessage);
                     break;
                 }
             }
@@ -208,21 +222,24 @@ namespace i4p
         
         public string CommonKey()
         {
-            string CommonKey = "";
+
             while (message1.Length < Code1.Length || message2.Length < Code2.Length)
             {
                 if (message1[message1.Length - 1] != ' ')
                 {
                     string LastBlock = message1.Substring(message1.LastIndexOf(' ') + 1);
-                    CommonKey += KeyBlock(LastBlock, Code1);
+                    key = KeyBlock(LastBlock, Code1);
                 }
                 else
                 {
                     string LastBlock = message2.Substring(message2.LastIndexOf(' ') + 1);
-                    CommonKey += KeyBlock(LastBlock, Code2);
+                    key = KeyBlock(LastBlock, Code2);
                 }
             }
-            return CommonKey;
+            //Console.WriteLine(message1);
+            //Console.WriteLine(message2);
+            Console.WriteLine(key);
+            return key;
         } 
 
     }
