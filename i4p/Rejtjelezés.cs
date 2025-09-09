@@ -214,7 +214,7 @@ namespace i4p
                     message1 = Messages[0];
                     message2 = Messages[1];
                     //Console.WriteLine(message1);
-                    Console.WriteLine(message2);
+                    //Console.WriteLine(message2);
                     break;
                 }
             }
