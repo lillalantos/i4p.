@@ -169,7 +169,7 @@ namespace i4p
                 string PossibleKeyBlock = key;
 
 
-                if (Messages[WhichMessage][Messages[WhichMessage].Length - 1] == ' ')
+                if (Messages[WhichMessage][Messages[WhichMessage].Length - 1] == ' ' || Messages[WhichMessage].Length==WhichCode.Length)
                     break;
 
                 for (int i = LastBlock.Length; i < PossibleWord.Length; i++)
@@ -213,7 +213,8 @@ namespace i4p
                     key = PossibleKeyBlock;
                     message1 = Messages[0];
                     message2 = Messages[1];
-                    //Console.WriteLine(WhichMessage);
+                    //Console.WriteLine(message1);
+                    Console.WriteLine(message2);
                     break;
                 }
             }
@@ -225,17 +226,19 @@ namespace i4p
 
             while (message1.Length < Code1.Length || message2.Length < Code2.Length)
             {
-                if (message1[message1.Length - 1] != ' ')
+                if (message1.Length < Code1.Length && message1[message1.Length - 1] != ' ')
                 {
                     string LastBlock = message1.Substring(message1.LastIndexOf(' ') + 1);
                     key = KeyBlock(LastBlock, Code1);
                 }
-                else
+                else if (message2.Length < Code2.Length && message2[message2.Length - 1] != ' ')
                 {
                     string LastBlock = message2.Substring(message2.LastIndexOf(' ') + 1);
                     key = KeyBlock(LastBlock, Code2);
                 }
             }
+
+
             //Console.WriteLine(message1);
             //Console.WriteLine(message2);
             Console.WriteLine(key);

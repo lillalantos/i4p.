@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NlIz1EJceAQ=",
+  "dgSpecHash": "tmwgMiGOHqw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\önéletzrajz\\i4p\\Test\\Test.csproj",
+  "projectFilePath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\Test\\Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lanto\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\lanto\\.nuget\\packages\\microsoft.codecoverage\\17.8.0\\microsoft.codecoverage.17.8.0.nupkg.sha512",

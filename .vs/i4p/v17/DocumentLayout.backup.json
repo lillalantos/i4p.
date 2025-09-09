@@ -1,22 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\",
+  "WorkspaceRootPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\rejtjelez\u00E9s.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\github\\i4p\\i4p\\rejtjelez\u00E9s.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|solutionrelative:i4p\\rejtjelez\u00E9s.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\commonkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|solutionrelative:i4p\\commonkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\github\\i4p\\i4p\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|solutionrelative:i4p\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F68CC861-5ED9-4BF7-B0B7-48079ECF95A4}|Test\\Test.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F68CC861-5ED9-4BF7-B0B7-48079ECF95A4}|Test\\Test.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\github\\i4p\\test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F68CC861-5ED9-4BF7-B0B7-48079ECF95A4}|Test\\Test.csproj|solutionrelative:test\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|c:\\users\\lanto\\onedrive\\dokumentumok\\github\\i4p\\i4p\\commonkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1240497B-0106-46B1-BD80-E639B34B5FE1}|i4p\\i4p.csproj|solutionrelative:i4p\\commonkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,15 +26,27 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "CommonKey.cs",
+              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\CommonKey.cs",
+              "RelativeDocumentMoniker": "i4p\\CommonKey.cs",
+              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\CommonKey.cs",
+              "RelativeToolTip": "i4p\\CommonKey.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAAAG8AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-18T10:31:22.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\Test\\UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\Test\\UnitTest1.cs",
               "RelativeDocumentMoniker": "Test\\UnitTest1.cs",
-              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\Test\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\Test\\UnitTest1.cs",
               "RelativeToolTip": "Test\\UnitTest1.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAkwC8AAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -44,38 +56,27 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Rejtjelez\u00E9s.cs",
-              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\Rejtjelez\u00E9s.cs",
+              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\Rejtjelez\u00E9s.cs",
               "RelativeDocumentMoniker": "i4p\\Rejtjelez\u00E9s.cs",
-              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\Rejtjelez\u00E9s.cs",
-              "RelativeToolTip": "i4p\\Rejtjelez\u00E9s.cs",
-              "ViewState": "AgIAAOAAAAAAAAAAAAAAANkAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\Rejtjelez\u00E9s.cs*",
+              "RelativeToolTip": "i4p\\Rejtjelez\u00E9s.cs*",
+              "ViewState": "AgIAANYAAAAAAAAAAAAMwOkAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-05T12:18:47.729Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\Program.cs",
-              "RelativeDocumentMoniker": "i4p\\Program.cs",
-              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\Program.cs",
-              "RelativeToolTip": "i4p\\Program.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAADEAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-05T12:00:13.448Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CommonKey.cs",
-              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\CommonKey.cs",
-              "RelativeDocumentMoniker": "i4p\\CommonKey.cs",
-              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\\u00F6n\u00E9letzrajz\\i4p\\i4p\\CommonKey.cs",
-              "RelativeToolTip": "i4p\\CommonKey.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAAAG8AAAAPAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\Program.cs",
+              "RelativeDocumentMoniker": "i4p\\Program.cs",
+              "ToolTip": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\Program.cs",
+              "RelativeToolTip": "i4p\\Program.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwDAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-18T10:31:22.846Z"
+              "WhenOpened": "2025-08-05T12:00:13.448Z",
+              "EditorCaption": ""
             }
           ]
         }

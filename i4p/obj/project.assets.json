@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\önéletzrajz\\i4p\\i4p\\i4p.csproj",
+      "projectUniqueName": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\i4p.csproj",
       "projectName": "i4p",
-      "projectPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\önéletzrajz\\i4p\\i4p\\i4p.csproj",
+      "projectPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\i4p.csproj",
       "packagesPath": "C:\\Users\\lanto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\önéletzrajz\\i4p\\i4p\\obj\\",
+      "outputPath": "C:\\Users\\lanto\\OneDrive\\Dokumentumok\\GitHub\\i4p\\i4p\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

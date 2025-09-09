@@ -46,7 +46,7 @@
 
 
                 Rejtjelezes titkositas = new Rejtjelezes(MessageBlock, Code1, Code2);
-                titkositas.KeyBlock("curios", "dvsjptjuzaljmmfeauifadbu");
+                //titkositas.KeyBlock("curios", "dvsjptjuzaljmmfeauifadbu");
                 titkositas.CommonKey();
             }
 
